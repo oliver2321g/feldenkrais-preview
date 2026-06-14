@@ -289,6 +289,52 @@ h3 {
   margin-top: 30px;
 }
 
+.version-switch {
+  width: min(560px, 100%);
+  margin-top: 24px;
+  padding: 14px;
+  border: 1px solid rgba(255, 253, 250, 0.34);
+  border-radius: 8px;
+  background: rgba(31, 42, 42, 0.42);
+  backdrop-filter: blur(10px);
+}
+
+.version-switch-title {
+  color: rgba(255, 253, 250, 0.72);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.version-switch-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.version-switch button {
+  min-height: 42px;
+  border: 1px solid rgba(255, 253, 250, 0.36);
+  border-radius: 7px;
+  background: transparent;
+  color: #fffdfa;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.version-switch button.is-active {
+  border-color: #fffdfa;
+  background: #fffdfa;
+  color: var(--ink);
+}
+
+.version-switch-note {
+  margin-top: 10px;
+  color: rgba(255, 253, 250, 0.72);
+  font-size: 0.9rem;
+}
+
 .button,
 .contact-actions a,
 .contact-actions span {
@@ -348,6 +394,59 @@ h3 {
   width: min(var(--max), calc(100% - 36px));
   margin: 0 auto;
   padding: clamp(64px, 9vw, 112px) 0;
+}
+
+.experience-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-copy p:not(.section-kicker) {
+  max-width: 760px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+.experience-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  counter-reset: experience;
+  list-style: none;
+}
+
+.experience-steps li {
+  position: relative;
+  min-height: 60px;
+  padding: 17px 18px 17px 58px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 250, 0.78);
+  color: #3e4d48;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.experience-steps li::before {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--clay-soft);
+  color: var(--clay);
+  counter-increment: experience;
+  content: counter(experience);
+  font-size: 0.85rem;
+  font-weight: 900;
 }
 
 .section-split {
@@ -695,6 +794,7 @@ h3 {
   .intro-grid,
   .section-split,
   .section-heading,
+  .experience-section,
   .session-layout,
   .contact-section,
   .site-footer {
@@ -748,6 +848,10 @@ h3 {
 
   .button {
     width: 100%;
+  }
+
+  .version-switch-controls {
+    grid-template-columns: 1fr;
   }
 
   .section {
