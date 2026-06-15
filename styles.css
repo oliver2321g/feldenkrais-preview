@@ -398,9 +398,9 @@ h3 {
 
 .experience-section {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1fr);
   gap: clamp(28px, 5vw, 56px);
-  align-items: center;
+  align-items: start;
   border-bottom: 1px solid var(--line);
 }
 
@@ -411,8 +411,144 @@ h3 {
   font-size: 1.04rem;
 }
 
+.experience-copy .experience-safety {
+  padding: 14px 16px;
+  border-left: 3px solid var(--clay);
+  background: rgba(234, 208, 197, 0.36);
+  color: #4a5652;
+  font-size: 0.94rem;
+}
+
+.experience-guide {
+  display: grid;
+  gap: 16px;
+}
+
+.experience-visual {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 18px;
+  align-items: center;
+  min-height: 188px;
+  padding: 18px;
+  border: 1px solid rgba(185, 103, 79, 0.26);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(217, 233, 229, 0.72), rgba(255, 253, 250, 0.92)),
+    var(--paper);
+}
+
+.body-figure {
+  position: relative;
+  min-height: 150px;
+}
+
+.body-head,
+.body-neck,
+.body-ribs,
+.body-pelvis,
+.body-arc {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.body-head {
+  top: 2px;
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--sage-dark);
+  border-radius: 50%;
+  background: rgba(255, 253, 250, 0.92);
+}
+
+.body-head::after {
+  position: absolute;
+  top: 21px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clay);
+  content: "";
+}
+
+.body-neck {
+  top: 52px;
+  width: 18px;
+  height: 22px;
+  border-radius: 10px;
+  background: var(--sage);
+}
+
+.body-ribs {
+  top: 72px;
+  width: 86px;
+  height: 52px;
+  border: 2px solid var(--sage);
+  border-radius: 46px 46px 30px 30px;
+  background: rgba(95, 127, 113, 0.12);
+}
+
+.body-pelvis {
+  top: 122px;
+  width: 104px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(185, 103, 79, 0.3);
+}
+
+.body-arc {
+  top: 16px;
+  left: calc(50% + 35px);
+  width: 58px;
+  height: 58px;
+  border-top: 2px solid var(--clay);
+  border-right: 2px solid var(--clay);
+  border-radius: 0 58px 0 0;
+  transform: none;
+}
+
+.body-arc::after {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid var(--clay);
+  border-right: 2px solid var(--clay);
+  transform: rotate(45deg);
+  content: "";
+}
+
+.focus-points {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.focus-points li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #354641;
+  font-weight: 900;
+}
+
+.focus-points li::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clay);
+  box-shadow: 0 0 0 5px rgba(185, 103, 79, 0.12);
+  content: "";
+}
+
 .experience-steps {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin: 0;
   padding: 0;
@@ -422,14 +558,29 @@ h3 {
 
 .experience-steps li {
   position: relative;
-  min-height: 60px;
-  padding: 17px 18px 17px 58px;
+  min-height: 132px;
+  padding: 18px 18px 18px 58px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 253, 250, 0.78);
   color: #3e4d48;
-  font-weight: 800;
   line-height: 1.55;
+}
+
+.experience-steps strong,
+.experience-steps span {
+  display: block;
+}
+
+.experience-steps strong {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.experience-steps span {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.93rem;
 }
 
 .experience-steps li::before {
@@ -806,6 +957,10 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .experience-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .contact-actions a,
   .contact-actions span {
     width: 100%;
@@ -861,8 +1016,24 @@ h3 {
 
   .feature-grid,
   .audience-list,
-  .intro-grid {
+  .intro-grid,
+  .experience-steps,
+  .experience-visual {
     grid-template-columns: 1fr;
+  }
+
+  .experience-visual {
+    justify-items: center;
+  }
+
+  .focus-points {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .focus-points li {
+    justify-content: center;
+    font-size: 0.9rem;
   }
 
   .profile-panel dl div {

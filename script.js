@@ -33,10 +33,27 @@ const variantCopy = {
       ["02", "少一點力氣", "練習常鼓勵輕柔與舒適，讓你觀察哪裡其實不需要一直出力。"],
       ["03", "多一些選擇", "當動作不只剩一種做法，日常行走、坐下、轉身與休息都可能變得更有彈性。"],
     ],
-    experienceTitle: "先理解名詞，再理解課堂",
+    experienceTitle: "先理解名詞，再給身體一個線索",
     experienceText:
-      "資料介紹版適合回答「它是什麼、有哪些形式、和哪些概念有關」。但初次接觸者常常還需要一個身體上的小線索，才比較容易明白為什麼這不是伸展或按摩。",
-    experienceSteps: ["讀到方法的定義", "知道團體課與個別課", "理解它是身體學習而非醫療承諾"],
+      "資料介紹可以回答「它是什麼」，但費登魁斯更常從一個可感覺的差異開始。這裡保留一個很短的入口，讓人知道課堂不是追求角度，而是練習觀察動作如何被組織。",
+    experienceSteps: [
+      {
+        title: "照習慣做一次",
+        text: "坐穩，輕輕把頭轉向右邊，記得你大概看到哪裡。",
+      },
+      {
+        title: "換一個觀察點",
+        text: "先不急著轉更遠，留意眼睛、肋骨、坐骨有沒有參與。",
+      },
+      {
+        title: "再做一次",
+        text: "讓眼睛先慢慢看向右邊，頭再跟上，保持舒服。",
+      },
+      {
+        title: "比較差異",
+        text: "問自己：是脖子更努力，還是身體多了一點合作？",
+      },
+    ],
   },
   understanding: {
     label: "理解引導版",
@@ -65,10 +82,27 @@ const variantCopy = {
       ["02", "不是忍耐疼痛", "動作可以很小、很慢、很舒服；不舒服本身就是需要被尊重的訊號。"],
       ["03", "不是變得完美", "更重要的是多一些可選擇的路徑，讓日常動作不再只剩硬撐。"],
     ],
-    experienceTitle: "30 秒小體驗：轉頭以前，先不要急著轉到最遠",
+    experienceTitle: "一分鐘小體驗：轉頭以前，先不要急著轉到最遠",
     experienceText:
-      "坐著，慢慢看向左邊。不要拉到極限，只感覺眼睛、下巴、肩膀、肋骨有沒有一起參與。回到中間，休息一下，再轉一次。第二次有沒有一點不同？",
-    experienceSteps: ["先做一次熟悉的動作", "注意身體哪些地方參與", "休息後再做一次，感覺差異"],
+      "你可以先照平常的方式轉一次，再把注意力放到一個平常不會觀察的地方。差異不一定很大，但那一點點「原來還有別的做法」，就是理解費登魁斯的入口。",
+    experienceSteps: [
+      {
+        title: "照習慣轉一次",
+        text: "坐著，輕輕把頭轉向右邊，不追求最遠，只記得大概看到哪裡。",
+      },
+      {
+        title: "換一個觀察點",
+        text: "回到中間，感覺兩邊坐骨的重量，再留意肋骨有沒有一點跟著轉。",
+      },
+      {
+        title: "讓眼睛先走",
+        text: "再次看向右邊，讓眼睛先慢慢移動，頭只是輕輕跟上。",
+      },
+      {
+        title: "問一個問題",
+        text: "這次是脖子更用力，還是身體有更多地方一起參與？",
+      },
+    ],
   },
 };
 
@@ -127,8 +161,25 @@ function createExperienceSection() {
       <p class="section-kicker">先讓人感覺到差別</p>
       <h2 id="experience-title"></h2>
       <p data-experience-text></p>
+      <p class="experience-safety">保持舒服，不忍痛、不追求角度；若有疼痛或暈眩，請停止並諮詢專業人員。</p>
     </div>
-    <ol class="experience-steps" aria-label="體驗步驟"></ol>
+    <div class="experience-guide">
+      <div class="experience-visual" aria-label="轉頭時可以留意眼睛、肋骨與坐骨">
+        <div class="body-figure" aria-hidden="true">
+          <span class="body-head"></span>
+          <span class="body-neck"></span>
+          <span class="body-ribs"></span>
+          <span class="body-pelvis"></span>
+          <span class="body-arc"></span>
+        </div>
+        <ul class="focus-points">
+          <li>眼睛</li>
+          <li>肋骨</li>
+          <li>坐骨</li>
+        </ul>
+      </div>
+      <ol class="experience-steps" aria-label="體驗步驟"></ol>
+    </div>
   `;
 
   introBand.insertAdjacentElement("afterend", section);
@@ -177,9 +228,14 @@ function applyVariant(variantName) {
   const steps = document.querySelector(".experience-steps");
   if (steps) {
     steps.replaceChildren(
-      ...variant.experienceSteps.map((text) => {
+      ...variant.experienceSteps.map((step) => {
         const item = document.createElement("li");
-        item.textContent = text;
+        const title = document.createElement("strong");
+        const detail = document.createElement("span");
+        title.textContent = typeof step === "string" ? step : step.title;
+        detail.textContent = typeof step === "string" ? "" : step.text;
+        item.append(title);
+        if (detail.textContent) item.append(detail);
         return item;
       }),
     );
