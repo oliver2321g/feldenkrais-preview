@@ -9,6 +9,7 @@ const variantCopy = {
   source: {
     label: "資料介紹版",
     note: "偏向整理網路與官方資料，適合說明名詞、形式與背景。",
+    experienceLayout: "simple",
     title: "費登魁斯方法",
     eyebrow: "身心教育 · 動作覺察 · 自我學習",
     lede:
@@ -33,31 +34,15 @@ const variantCopy = {
       ["02", "少一點力氣", "練習常鼓勵輕柔與舒適，讓你觀察哪裡其實不需要一直出力。"],
       ["03", "多一些選擇", "當動作不只剩一種做法，日常行走、坐下、轉身與休息都可能變得更有彈性。"],
     ],
-    experienceTitle: "先理解名詞，再給身體一個線索",
+    experienceTitle: "先理解名詞，再理解課堂",
     experienceText:
-      "資料介紹可以回答「它是什麼」，但費登魁斯更常從一個可感覺的差異開始。這裡保留一個很短的入口，讓人知道課堂不是追求角度，而是練習觀察動作如何被組織。",
-    experienceSteps: [
-      {
-        title: "照習慣做一次",
-        text: "坐穩，輕輕把頭轉向右邊，記得你大概看到哪裡。",
-      },
-      {
-        title: "換一個觀察點",
-        text: "先不急著轉更遠，留意眼睛、肋骨、坐骨有沒有參與。",
-      },
-      {
-        title: "再做一次",
-        text: "讓眼睛先慢慢看向右邊，頭再跟上，保持舒服。",
-      },
-      {
-        title: "比較差異",
-        text: "問自己：是脖子更努力，還是身體多了一點合作？",
-      },
-    ],
+      "資料介紹版適合回答「它是什麼、有哪些形式、和哪些概念有關」。但初次接觸者常常還需要一個身體上的小線索，才比較容易明白為什麼這不是伸展或按摩。",
+    experienceSteps: ["讀到方法的定義", "知道團體課與個別課", "理解它是身體學習而非醫療承諾"],
   },
   understanding: {
     label: "理解引導版",
     note: "偏向我們討論出的說法，先讓人有感覺，再補上方法名稱。",
+    experienceLayout: "guided",
     title: "身體也需要新的選擇",
     eyebrow: "如果你總是放鬆不了，也許不是你不夠努力",
     lede:
@@ -188,6 +173,7 @@ function createExperienceSection() {
 function applyVariant(variantName) {
   const variant = variantCopy[variantName] || variantCopy.understanding;
   body.dataset.contentMode = variantName;
+  body.dataset.experienceLayout = variant.experienceLayout || "guided";
   localStorage.setItem("feldenkraisContentVariant", variantName);
 
   document.title =

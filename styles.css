@@ -600,6 +600,24 @@ h3 {
   font-weight: 900;
 }
 
+body[data-experience-layout="simple"] .experience-visual,
+body[data-experience-layout="simple"] .experience-copy .experience-safety {
+  display: none;
+}
+
+body[data-experience-layout="simple"] .experience-section {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  align-items: center;
+}
+
+body[data-experience-layout="simple"] .experience-steps {
+  grid-template-columns: 1fr;
+}
+
+body[data-experience-layout="simple"] .experience-steps li {
+  min-height: 60px;
+}
+
 .section-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
