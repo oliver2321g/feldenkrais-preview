@@ -121,8 +121,8 @@ function createVersionSwitch() {
   switcher.innerHTML = `
     <p class="version-switch-title">版本比較</p>
     <div class="version-switch-controls" role="group" aria-label="選擇內容版本">
-      <button type="button" data-version-button="understanding">理解引導版</button>
       <button type="button" data-version-button="source">資料介紹版</button>
+      <button type="button" data-version-button="understanding">理解引導版</button>
     </div>
     <p class="version-switch-note" data-version-note></p>
   `;
@@ -174,7 +174,6 @@ function applyVariant(variantName) {
   const variant = variantCopy[variantName] || variantCopy.understanding;
   body.dataset.contentMode = variantName;
   body.dataset.experienceLayout = variant.experienceLayout || "guided";
-  localStorage.setItem("feldenkraisContentVariant", variantName);
 
   document.title =
     variantName === "source"
@@ -242,7 +241,7 @@ function setTextWithin(root, selector, text) {
 
 createVersionSwitch();
 createExperienceSection();
-applyVariant(localStorage.getItem("feldenkraisContentVariant") || "understanding");
+applyVariant("source");
 
 navToggle?.addEventListener("click", () => {
   const isOpen = body.classList.toggle("nav-open");
