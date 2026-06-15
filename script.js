@@ -149,19 +149,37 @@ function createExperienceSection() {
       <p class="experience-safety">保持舒服，不忍痛、不追求角度；若有疼痛或暈眩，請停止並諮詢專業人員。</p>
     </div>
     <div class="experience-guide">
-      <div class="experience-visual" aria-label="轉頭時可以留意眼睛、肋骨與坐骨">
-        <div class="body-figure" aria-hidden="true">
-          <span class="body-head"></span>
-          <span class="body-neck"></span>
-          <span class="body-ribs"></span>
-          <span class="body-pelvis"></span>
-          <span class="body-arc"></span>
+      <div class="experience-visual" aria-label="一分鐘體驗的觀察順序">
+        <div class="visual-compare">
+          <div>
+            <span>第一次</span>
+            <strong>照習慣轉頭</strong>
+            <small>記得大概看到哪裡</small>
+          </div>
+          <span class="visual-arrow" aria-hidden="true"></span>
+          <div class="visual-compare-accent">
+            <span>第二次</span>
+            <strong>眼睛先走</strong>
+            <small>頭只是輕輕跟上</small>
+          </div>
         </div>
-        <ul class="focus-points">
-          <li>眼睛</li>
-          <li>肋骨</li>
-          <li>坐骨</li>
-        </ul>
+        <ol class="focus-points">
+          <li>
+            <span class="focus-number">1</span>
+            <strong>眼睛</strong>
+            <small>先慢慢看向右邊</small>
+          </li>
+          <li>
+            <span class="focus-number">2</span>
+            <strong>肋骨</strong>
+            <small>有沒有一點跟著轉</small>
+          </li>
+          <li>
+            <span class="focus-number">3</span>
+            <strong>坐骨</strong>
+            <small>重量有沒有改變</small>
+          </li>
+        </ol>
       </div>
       <ol class="experience-steps" aria-label="體驗步驟"></ol>
     </div>
