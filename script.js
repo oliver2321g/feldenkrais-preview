@@ -149,37 +149,23 @@ function createExperienceSection() {
       <p class="experience-safety">保持舒服，不忍痛、不追求角度；若有疼痛或暈眩，請停止並諮詢專業人員。</p>
     </div>
     <div class="experience-guide">
-      <div class="experience-visual" aria-label="一分鐘體驗的觀察順序">
-        <div class="visual-compare">
-          <div>
-            <span>第一次</span>
-            <strong>照習慣轉頭</strong>
-            <small>記得大概看到哪裡</small>
+      <div class="experience-visual" aria-label="轉頭時可以觀察眼睛、肋骨與坐骨的關係">
+        <div class="movement-map">
+          <div class="movement-figure" aria-hidden="true">
+            <span class="movement-gaze"></span>
+            <span class="movement-head"><span class="movement-eye"></span></span>
+            <span class="movement-neck"></span>
+            <span class="movement-ribs"></span>
+            <span class="movement-spine"></span>
+            <span class="movement-seat"></span>
           </div>
-          <span class="visual-arrow" aria-hidden="true"></span>
-          <div class="visual-compare-accent">
-            <span>第二次</span>
-            <strong>眼睛先走</strong>
-            <small>頭只是輕輕跟上</small>
+          <div class="movement-cues">
+            <p><span class="cue-dot cue-eye"></span><strong>眼睛</strong><small>視線先往右邊走</small></p>
+            <p><span class="cue-dot cue-ribs"></span><strong>肋骨</strong><small>感覺有沒有跟一點</small></p>
+            <p><span class="cue-dot cue-seat"></span><strong>坐骨</strong><small>重量留在椅子上</small></p>
           </div>
+          <p class="movement-caption">不是轉更遠，而是看見動作從哪裡開始、哪裡一起參與。</p>
         </div>
-        <ol class="focus-points">
-          <li>
-            <span class="focus-number">1</span>
-            <strong>眼睛</strong>
-            <small>先慢慢看向右邊</small>
-          </li>
-          <li>
-            <span class="focus-number">2</span>
-            <strong>肋骨</strong>
-            <small>有沒有一點跟著轉</small>
-          </li>
-          <li>
-            <span class="focus-number">3</span>
-            <strong>坐骨</strong>
-            <small>重量有沒有改變</small>
-          </li>
-        </ol>
       </div>
       <ol class="experience-steps" aria-label="體驗步驟"></ol>
     </div>
