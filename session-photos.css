@@ -1,27 +1,34 @@
 .session-illustration {
+  min-height: clamp(220px, 28vw, 300px);
+  aspect-ratio: 16 / 9;
   background-image:
-    linear-gradient(145deg, rgba(250, 249, 245, 0.18), rgba(105, 132, 120, 0.08)),
+    linear-gradient(145deg, rgba(250, 249, 245, 0.08), rgba(105, 132, 120, 0.03)),
     linear-gradient(135deg, #e9dfd2, #f7f3ec);
 }
 
 .session-illustration-group {
   background-image:
-    linear-gradient(145deg, rgba(250, 249, 245, 0.16), rgba(105, 132, 120, 0.05)),
-    url("assets/session-group-atm.jpg?v=20260617-compact");
-  background-position: center, 24% center;
+    linear-gradient(145deg, rgba(250, 249, 245, 0.08), rgba(105, 132, 120, 0.03)),
+    url("assets/session-group-atm.jpg?v=20260617-clear-480q62");
+  background-position: center, center;
   background-size: cover;
 }
 
 .session-illustration-one {
   background-image:
-    linear-gradient(145deg, rgba(250, 249, 245, 0.18), rgba(105, 132, 120, 0.06)),
-    url("assets/session-individual-fi.jpg?v=20260617-compact");
-  background-position: center, 62% center;
+    linear-gradient(145deg, rgba(250, 249, 245, 0.08), rgba(105, 132, 120, 0.03)),
+    url("assets/session-individual-fi.jpg?v=20260617-clear-480q62");
+  background-position: center, center;
   background-size: cover;
+}
+
+.session-illustration::before {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 250, 0.08), rgba(255, 253, 250, 0.02) 58%, rgba(31, 42, 42, 0.04));
 }
 
 .session-illustration::after {
   background:
-    linear-gradient(180deg, rgba(247, 244, 238, 0.08), rgba(47, 63, 59, 0.12));
-  opacity: 0.38;
+    linear-gradient(180deg, rgba(247, 244, 238, 0.04), rgba(47, 63, 59, 0.08));
+  opacity: 0.18;
 }
