@@ -856,7 +856,7 @@ body[data-experience-layout="simple"] .experience-steps li {
 }
 
 .profile-label,
-session-type,
+.session-type,
 .feature-number {
   color: var(--clay);
   font-size: 0.78rem;
