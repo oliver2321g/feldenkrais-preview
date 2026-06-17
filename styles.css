@@ -1033,9 +1033,58 @@ body[data-experience-layout="simple"] .experience-steps li {
   color: var(--muted);
 }
 
+.video-section,
 .sessions-section,
 .faq-section {
   border-top: 1px solid var(--line);
+}
+
+.video-frame {
+  position: relative;
+  width: min(900px, 100%);
+  aspect-ratio: 16 / 9;
+  margin-top: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(95, 127, 113, 0.28);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(217, 233, 229, 0.7), rgba(255, 253, 250, 0.9)),
+    var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-fallback {
+  margin-top: 14px;
+}
+
+.video-fallback a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid rgba(95, 127, 113, 0.28);
+  border-radius: 7px;
+  background: rgba(255, 253, 250, 0.72);
+  color: var(--sage-dark);
+  font-size: 0.92rem;
+  font-weight: 850;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.video-fallback a:hover,
+.video-fallback a:focus-visible {
+  border-color: rgba(95, 127, 113, 0.58);
+  background: #fffdfa;
+  outline: none;
 }
 
 .session-layout {
@@ -1051,24 +1100,56 @@ body[data-experience-layout="simple"] .experience-steps li {
 
 .session-illustration {
   position: relative;
-  min-height: 168px;
+  min-height: 220px;
   margin-bottom: 24px;
   overflow: hidden;
   border: 1px solid rgba(185, 103, 79, 0.22);
   border-radius: 8px;
+  background-image:
+    linear-gradient(180deg, rgba(31, 42, 42, 0.02), rgba(31, 42, 42, 0.32)),
+    url("assets/hero-feldenkrais.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 16px 34px rgba(31, 42, 42, 0.09);
+  isolation: isolate;
+}
+
+.session-illustration::before,
+.session-illustration::after {
+  position: absolute;
+  content: "";
+}
+
+.session-illustration::before {
+  inset: 0;
+  z-index: 0;
   background:
-    linear-gradient(135deg, rgba(217, 233, 229, 0.72), rgba(255, 253, 250, 0.92)),
-    var(--paper);
+    linear-gradient(90deg, rgba(255, 253, 250, 0.68), rgba(255, 253, 250, 0.16) 58%, rgba(31, 42, 42, 0.12)),
+    radial-gradient(circle at 18% 20%, rgba(255, 253, 250, 0.7), transparent 30%);
 }
 
 .session-illustration::after {
-  position: absolute;
+  z-index: 1;
   right: 22px;
   bottom: 20px;
   left: 22px;
   height: 1px;
-  background: rgba(95, 127, 113, 0.16);
-  content: "";
+  background: rgba(255, 253, 250, 0.52);
+  box-shadow: 0 -58px 82px rgba(255, 253, 250, 0.18);
+}
+
+.session-illustration-group {
+  background-position: 24% center;
+}
+
+.session-illustration-one {
+  background-position: 86% center;
+}
+
+.session-illustration-one::before {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 250, 0.28), rgba(255, 253, 250, 0.08) 46%, rgba(31, 42, 42, 0.22)),
+    radial-gradient(circle at 72% 18%, rgba(255, 253, 250, 0.42), transparent 28%);
 }
 
 .session-mat,
