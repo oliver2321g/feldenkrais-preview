@@ -10,8 +10,8 @@ const variantCopy = {
     label: "資料介紹版",
     note: "偏向整理網路與官方資料，適合說明名詞、形式與背景。",
     experienceLayout: "simple",
-    title: "費登魁斯方法",
-    eyebrow: "身心教育 · 動作覺察 · 自我學習",
+    title: "費什麼方法？",
+    eyebrow: "Feel What? · 身心教育 · 動作覺察",
     lede:
       "透過溫和、可探索的動作，引導你重新感覺身體如何組織自己，在日常動作裡找到更多選擇與自在。",
     draft: "校稿版：內容、講師介紹與聯絡資訊仍在確認中。",
@@ -43,8 +43,8 @@ const variantCopy = {
     label: "理解引導版",
     note: "偏向我們討論出的說法，先讓人有感覺，再補上方法名稱。",
     experienceLayout: "guided",
-    title: "身體也需要新的選擇",
-    eyebrow: "如果你總是放鬆不了，也許不是你不夠努力",
+    title: "費什麼方法？",
+    eyebrow: "如果你總是放鬆不了，也許不是你不夠努力，而是太努力了。",
     lede:
       "費登魁斯不是要你把身體控制得更正確，而是透過很小、很慢、很舒服的動作，發現自己平常怎麼用力，然後讓身體有機會試試看別的做法。",
     draft: "比較版：目前用來討論網站說法，正式內容仍需校稿。",
@@ -59,13 +59,14 @@ const variantCopy = {
       "費登魁斯方法提供的不是一套標準答案，而是一個慢下來觀察的環境。你透過細小的動作、休息與差異感，重新認識自己的習慣，讓身體多一點選擇。",
     ],
     methodKicker: "這和費登魁斯有什麼關係",
-    methodTitle: "它比較像是用身體重新學一次「怎麼動比較不費力」",
+    methodTitle: "它重新學一次「怎麼動更不費力」",
+    methodTitleEmphasis: "費力",
     methodParagraph:
-      "在課堂裡，重點不是做到最大、最漂亮、最標準，而是感覺：哪裡先動？哪裡跟著動？哪裡其實不需要那麼用力？當你開始分辨這些差異，改變才有機會發生。",
+      "在課堂裡，重點不是做到最大、最漂亮、最標準，是感覺：哪裡先動？哪裡跟著動？哪裡其實不需要那麼用力？當你開始分辨這些差異，改變就有機會發生。",
     features: [
-      ["01", "不是矯正你", "它不急著告訴你哪個姿勢才正確，而是讓你看見自己現在的習慣。"],
-      ["02", "不是忍耐疼痛", "動作可以很小、很慢、很舒服；不舒服本身就是需要被尊重的訊號。"],
-      ["03", "不是變得完美", "更重要的是多一些可選擇的路徑，讓日常動作不再只剩硬撐。"],
+      ["01", "不用矯正你", "它不急著告訴你哪個姿勢才正確，而是讓你看見自己現在的習慣。"],
+      ["02", "不用忍耐疼痛", "動作可以很小、很慢、很舒服；不舒服本身就是需要被尊重的訊號。"],
+      ["03", "不用變得完美", "更重要的是多一些可選擇的路徑，讓日常動作不再只剩硬撐。"],
     ],
     experienceTitle: "一分鐘小體驗：轉頭以前，先不要急著轉到最遠",
     experienceText:
@@ -111,6 +112,34 @@ function setParagraphs(containerSelector, paragraphs) {
   });
 }
 
+function setMethodTitle(variant) {
+  const title = document.querySelector("#method h2");
+  if (!title) return;
+
+  title.replaceChildren();
+
+  if (!variant.methodTitleEmphasis || !variant.methodTitle.includes(variant.methodTitleEmphasis)) {
+    title.textContent = variant.methodTitle;
+    return;
+  }
+
+  const [before, after] = variant.methodTitle.split(variant.methodTitleEmphasis);
+  const emphasisGroup = document.createElement("span");
+  emphasisGroup.className = "title-emphasis-group";
+  const emphasis = document.createElement("span");
+  emphasis.className = "title-emphasis";
+  emphasis.textContent = variant.methodTitleEmphasis;
+  emphasisGroup.append(emphasis);
+
+  if (after.startsWith("」")) {
+    emphasisGroup.append("」");
+    title.append(before, emphasisGroup, after.slice(1));
+    return;
+  }
+
+  title.append(before, emphasisGroup, after);
+}
+
 function createVersionSwitch() {
   const heroActions = document.querySelector(".hero-actions");
   if (!heroActions || document.querySelector(".version-switch")) return;
@@ -150,6 +179,10 @@ function createExperienceSection() {
     </div>
     <div class="experience-guide">
       <div class="experience-visual" aria-label="轉頭時可以觀察眼睛、肋骨與坐骨的關係">
+        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" aria-label="暫停示意動畫" title="暫停動畫">
+          <span class="motion-icon" aria-hidden="true"></span>
+          <span class="sr-only" data-motion-toggle-label>暫停示意動畫</span>
+        </button>
         <div class="movement-map">
           <div class="movement-figure" aria-hidden="true">
             <span class="movement-gaze"></span>
@@ -174,6 +207,35 @@ function createExperienceSection() {
   introBand.insertAdjacentElement("afterend", section);
 }
 
+function setupMotionToggle() {
+  const toggle = document.querySelector("[data-motion-toggle]");
+  if (!toggle) return;
+
+  const label = toggle.querySelector("[data-motion-toggle-label]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function setPaused(isPaused) {
+    body.classList.toggle("motion-paused", isPaused);
+    toggle.setAttribute("aria-pressed", String(isPaused));
+
+    const text = isPaused ? "播放示意動畫" : "暫停示意動畫";
+    toggle.setAttribute("aria-label", text);
+    toggle.title = isPaused ? "播放動畫" : "暫停動畫";
+    if (label) label.textContent = text;
+  }
+
+  if (prefersReducedMotion.matches) {
+    setPaused(true);
+    toggle.hidden = true;
+    return;
+  }
+
+  setPaused(false);
+  toggle.addEventListener("click", () => {
+    setPaused(!body.classList.contains("motion-paused"));
+  });
+}
+
 function applyVariant(variantName) {
   const variant = variantCopy[variantName] || variantCopy.understanding;
   body.dataset.contentMode = variantName;
@@ -181,8 +243,8 @@ function applyVariant(variantName) {
 
   document.title =
     variantName === "source"
-      ? "費登魁斯方法 | 資料介紹版"
-      : "身體也需要新的選擇 | 費登魁斯方法";
+      ? "費什麼方法？Feel What? | 資料介紹版"
+      : "費什麼方法？Feel What? | 理解引導版";
 
   setText(".hero .eyebrow", variant.eyebrow);
   setText("#hero-title", variant.title);
@@ -201,7 +263,7 @@ function applyVariant(variantName) {
   setParagraphs("#about .section-copy", variant.aboutParagraphs);
 
   setText("#method .section-kicker", variant.methodKicker);
-  setText("#method h2", variant.methodTitle);
+  setMethodTitle(variant);
   setText("#method .section-heading p:not(.section-kicker)", variant.methodParagraph);
 
   document.querySelectorAll(".feature-card").forEach((card, index) => {
@@ -245,6 +307,7 @@ function setTextWithin(root, selector, text) {
 
 createVersionSwitch();
 createExperienceSection();
+setupMotionToggle();
 applyVariant("source");
 
 navToggle?.addEventListener("click", () => {
