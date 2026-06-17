@@ -7,7 +7,7 @@
 .session-illustration-group {
   background-image:
     linear-gradient(145deg, rgba(250, 249, 245, 0.16), rgba(105, 132, 120, 0.05)),
-    url("assets/session-group-atm.jpg");
+    url("assets/session-group-atm.jpg?v=20260617-compact");
   background-position: center, 24% center;
   background-size: cover;
 }
@@ -15,7 +15,7 @@
 .session-illustration-one {
   background-image:
     linear-gradient(145deg, rgba(250, 249, 245, 0.18), rgba(105, 132, 120, 0.06)),
-    url("assets/session-individual-fi.jpg");
+    url("assets/session-individual-fi.jpg?v=20260617-compact");
   background-position: center, 62% center;
   background-size: cover;
 }
