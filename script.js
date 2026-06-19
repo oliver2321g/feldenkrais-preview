@@ -8,7 +8,8 @@ const sections = navLinks
 const siteCopy = {
   experienceLayout: "guided",
   title: "費什麼方法？",
-  eyebrow: "如果你總是放鬆不了，也許不是你不夠努力，而是太努力了。",
+  eyebrow:
+    "努力放鬆？這聽起來是不是有點怪。如果你總是放鬆不了，也許不是你不夠努力，而是身體還沒找到更省力的選擇。",
   lede:
     "費登魁斯不是要你把身體控制得更正確，而是透過很小、很慢、很舒服的動作，發現自己平常怎麼用力，然後讓身體有機會試試看別的做法。",
   aboutKicker: "先從一個常見困惑開始",
