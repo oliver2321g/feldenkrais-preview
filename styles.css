@@ -1568,6 +1568,14 @@ body[data-experience-layout="simple"] .experience-steps li {
     padding: 58px 0;
   }
 
+  .experience-section {
+    gap: 24px;
+  }
+
+  .experience-copy p:not(.section-kicker) {
+    margin-top: 16px;
+  }
+
   .feature-grid,
   .audience-list,
   .experience-steps,
@@ -1577,6 +1585,8 @@ body[data-experience-layout="simple"] .experience-steps li {
 
   .experience-visual {
     justify-items: stretch;
+    min-height: 0;
+    padding: 16px;
   }
 
   .movement-map {
@@ -1585,14 +1595,53 @@ body[data-experience-layout="simple"] .experience-steps li {
       "figure"
       "cues"
       "caption";
+    gap: 12px;
   }
 
   .movement-figure {
-    min-height: 210px;
+    min-height: 168px;
   }
 
   .movement-cues {
     grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .movement-cues p {
+    gap: 0 9px;
+  }
+
+  .movement-caption {
+    padding-top: 10px;
+    font-size: 0.9rem;
+  }
+
+  .experience-steps {
+    gap: 10px;
+  }
+
+  .experience-steps li {
+    min-height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .session-layout,
+  .session-card,
+  .session-card > * {
+    min-width: 0;
+  }
+
+  .session-card {
+    width: 100%;
+    padding: 22px;
+  }
+
+  .session-illustration {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 20px;
   }
 
   .profile-panel dl div {
