@@ -1572,8 +1572,19 @@ body[data-experience-layout="simple"] .experience-steps li {
     gap: 24px;
   }
 
+  .experience-copy h2 {
+    font-size: clamp(1.65rem, 8.5vw, 2.05rem);
+  }
+
   .experience-copy p:not(.section-kicker) {
     margin-top: 16px;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .experience-copy .experience-safety {
+    padding: 12px 14px;
+    font-size: 0.9rem;
   }
 
   .feature-grid,
@@ -1612,6 +1623,7 @@ body[data-experience-layout="simple"] .experience-steps li {
   }
 
   .movement-caption {
+    display: none;
     padding-top: 10px;
     font-size: 0.9rem;
   }
@@ -1624,6 +1636,12 @@ body[data-experience-layout="simple"] .experience-steps li {
     min-height: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+
+  .experience-steps span {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .session-layout,
