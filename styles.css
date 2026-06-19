@@ -1000,12 +1000,20 @@ body[data-experience-layout="simple"] .experience-steps li {
   margin-top: 34px;
 }
 
+.session-layout,
+.session-card,
+.session-card > * {
+  min-width: 0;
+}
+
 .session-card {
   padding: clamp(24px, 4vw, 34px);
 }
 
 .session-illustration {
   position: relative;
+  width: 100%;
+  max-width: 100%;
   min-height: 220px;
   margin-bottom: 24px;
   overflow: hidden;
