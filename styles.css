@@ -1047,14 +1047,14 @@ body[data-experience-layout="simple"] .experience-steps li {
 .session-illustration-group {
   background-image:
     linear-gradient(180deg, rgba(31, 42, 42, 0.02), rgba(31, 42, 42, 0.2)),
-    url("assets/session-group-atm.jpg");
+    url("assets/session-group-atm.jpg?v=20260619-regenerated");
   background-position: 24% center;
 }
 
 .session-illustration-one {
   background-image:
     linear-gradient(180deg, rgba(31, 42, 42, 0.02), rgba(31, 42, 42, 0.24)),
-    url("assets/session-individual-fi.jpg");
+    url("assets/session-individual-fi.jpg?v=20260619-regenerated");
   background-position: 62% center;
 }
 
